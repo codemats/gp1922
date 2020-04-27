@@ -1,5 +1,7 @@
 package spark.day01
 
+import java.util.concurrent.TimeUnit
+
 import org.apache.spark.rdd._
 import org.apache.spark.{SparkConf, SparkContext}
 
@@ -9,14 +11,15 @@ object SparkWordCount {
 
   def main(args: Array[String]): Unit = {
 
-    val hdfsFilePath = "hdfs://mac-yangheng:9000/file/study/word.txt"
+    val hdfsFilePath = "/Users/a10.12/Documents/study/bigdata/spark/gp1922/word.txt"
     val appName = "SparkWordCount"
     val conf = new SparkConf().setAppName(appName)
     .setMaster("local[2]")  //集群模式需要注释掉，否则已本地模式运行
     val sc = new SparkContext(conf)
 
     //读取hdfs文件
-    val lines: RDD[String] = sc.textFile(hdfsFilePath)
+    var lines: RDD[String] = sc.textFile(hdfsFilePath)
+    lines = lines.repartition(4)
     //数据压平
     val words: RDD[String] = lines.flatMap(_.split(" "))
     //组装数据（word,1）
@@ -31,5 +34,9 @@ object SparkWordCount {
     for (elem <- tuples) {
       println(elem)
     }
+
+    println("分区数："+lines.partitions.size)
+    TimeUnit.SECONDS.sleep(Int.MaxValue)
+    sc.stop()
   }
 }

@@ -13,9 +13,9 @@ object KdRdd2Type {
 
   def main(args: Array[String]): Unit = {
 
-    //1 磁盘数据中
     var conf = new SparkConf().setAppName("mkRDDType").setMaster("local[2]")
     val sc = new SparkContext(conf)
+    //1 磁盘数据中
     val rdds:RDD[String] = sc.textFile(filePaht)
     rdds.foreach(println)
     //文件内容
