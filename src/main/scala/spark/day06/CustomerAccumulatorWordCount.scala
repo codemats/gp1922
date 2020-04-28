@@ -12,7 +12,7 @@ object CustomerAccumulatorWordCount {
     val conf = new SparkConf().setAppName(this.getClass.getName).setMaster("local[2]")
     val sc = new SparkContext(conf)
 
-    //在定义单词累加器
+    //自定义单词累加器
     val acc = new WordCountAccumulator
     //注册累加器
     sc.register(acc,"WordCountAccumulator")
