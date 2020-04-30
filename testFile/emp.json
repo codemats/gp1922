@@ -1,0 +1,5 @@
+{"id":1,"sex":"man","name":"李四","age":20,"salary":100,"departmentId":1}
+{"id":2,"sex":"man","name":"李梅","age":15,"salary":200,"departmentId":2}
+{"id":3,"sex":"women","name":"张阳婵","age":25,"salary":300,"departmentId":3}
+{"id":4,"sex":"women","name":"李四妹","age":30,"salary":200,"departmentId":2}
+{"id":5,"sex":"women","name":"王二小","age":40,"salary":100,"departmentId":2}
