@@ -54,16 +54,31 @@
             <version>5.1.39</version>
         </dependency>
 
-        <dependency>
+        <!--不要手动添加对org.apache.kafka工件的依赖（例如kafka-clients）。
+        该spark-streaming-kafka-0-10工件已经具有适当的传递依赖关系，并且不
+        同的版本可能难以诊断，因此不兼容。-->
+      <!--  <dependency>
             <groupId>org.apache.kafka</groupId>
             <artifactId>kafka-clients</artifactId>
             <version>1.1.0</version>
-        </dependency>
+        </dependency>-->
 
         <dependency>
             <groupId>org.apache.kafka</groupId>
             <artifactId>kafka_2.11</artifactId>
             <version>1.1.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.spark</groupId>
+            <artifactId>spark-streaming_2.11</artifactId>
+            <version>${spark.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.spark</groupId>
+            <artifactId>spark-streaming-kafka-0-10_2.11</artifactId>
+            <version>${spark.version}</version>
         </dependency>
 
     </dependencies>
