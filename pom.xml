@@ -94,6 +94,13 @@
             <version>2.9.0</version>
         </dependency>
 
+        <!-- 实现redis超多的封装 -->
+        <dependency>
+            <groupId>org.redisson</groupId>
+            <artifactId>redisson</artifactId>
+            <version>3.11.6</version>
+        </dependency>
+
 
     </dependencies>
 
