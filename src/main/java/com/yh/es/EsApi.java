@@ -411,13 +411,13 @@ public class EsApi {
         hiBuilder.postTags("</h2>");
         hiBuilder.field("message");
         // 搜索数据
-        SearchResponse response = client.prepareSearch(index)
+        SearchRequestBuilder builder = client.prepareSearch(index)
                 .setTypes(type)
                 .setQuery(matchQuery)
-                .highlighter(hiBuilder)
-                .execute()
-                .actionGet();
+                .highlighter(hiBuilder);
 
+        System.out.println("查询语句："+builder.toString());
+        SearchResponse response = builder.execute().actionGet();
         //获取查询结果集
         SearchHits searchHits = response.getHits();
         System.out.println("共搜到:"+searchHits.getTotalHits()+"条结果!");
